@@ -9,7 +9,7 @@ Créez une nouvelle chambre
 {% if room %}
 <form action="{{ env.base_path ~ '/rooms/' ~ room.id ~ '/edit' }}" method="post" class="form">
     {% else %}
-    <form action="{{env.bath_base ~ '/rooms/' ~ room.id}}" method="post" class="form">
+    <form action="{{ env.base_path ~ '/rooms/' ~ room.id }}" method="post" class="form">
         {% endif %}
 
         <div class="form-group">
