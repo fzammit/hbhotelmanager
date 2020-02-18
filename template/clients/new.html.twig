@@ -1,1 +1,41 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}
+    Formulaire d'édition
+{% endblock title %}
+
+{% block content %}
+
+{% if client %}
+<form action="{{ env.base_path ~ '/clients/' ~ client.id ~ '/edit' }}" method="post" class="form">
+    {% else %}
+    <form action="{{ env.base_path ~ '/clients/new/' }}" method="post" class="form">
+        {% endif %}
+
+        <div class="form-group">
+            <label for="formFirstname">Prénom</label>
+            <input id="formFirstname" type="text" class="form-control" name="firstname" value="{{ client.firstname }}">
+        </div>
+        <div class="form-group">
+            <label for="formLastname">Nom</label>
+            <input id="formLastname" type="text" class="form-control" name="lastname" value="{{ client.lastname }}">
+        </div>
+        <div>
+            <label for="dateDarrivee">Arrivée</label>
+            <input type="date" name="entry_date" id="entry_date" class="form-control" value="{{client.entry_date}}">
+        </div>
+        <div>
+            <label for="dateDeDépart">Départ</label>
+            <input type="date" name="departure_date" id="departure_date" class="form-control" value="{{client.departure_date}}">
+        </div>
+        <div class="mt-5">
+
+            {% if client %}
+            <button class="btn btn-warning">Éditer l'utilisateur</button>
+            {% else %}
+            <button class="btn btn-primary">Créer l'utilisateur</button>
+            {% endif %}
+        </div>
+
+    </form>
+{% endblock content %}

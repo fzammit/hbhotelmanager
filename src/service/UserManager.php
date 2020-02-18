@@ -21,14 +21,14 @@ class UserManager extends AbstractManager implements ManagerInterface
     public function arrayToObject(array $array)
     {
 
-        $user = new User;
-        $user->setId($array['id']);
-        $user->setFirstName($array['firstname']);
-        $user->setLastName($array['lastname']);
-        $user->setEntry_Date($array['entry_date']);
-        $user->setDeparture_Date($array['departure_date']);
+        $client = new User;
+        $client->setId($array['id']);
+        $client->setFirstName($array['firstname']);
+        $client->setLastName($array['lastname']);
+        $client->setEntry_Date($array['entry_date']);
+        $client->setDeparture_Date($array['departure_date']);
 
-        return $user;
+        return $client;
     }
 
     /**
@@ -43,12 +43,13 @@ class UserManager extends AbstractManager implements ManagerInterface
 
         $data = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        $users = [];
+        $clients = [];
 
         foreach ($data as $d) {
-            $users[] = $this->arrayToObject($d);
+            $clients[] = $this->arrayToObject($d);
         }
-        return $users;
+        
+        return $clients;
     }
 
     /**
@@ -63,9 +64,9 @@ class UserManager extends AbstractManager implements ManagerInterface
 
         $data = $statement->fetch(PDO::FETCH_ASSOC);
 
-        $user = $this->arrayToObject($data);
+        $client = $this->arrayToObject($data);
 
-        return $user;
+        return $client;
     }
 
     /**

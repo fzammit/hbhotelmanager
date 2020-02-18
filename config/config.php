@@ -4,7 +4,7 @@ use App\Service\ServiceContainer;
 
 $configuration = [
     'db' => [
-        'dsn'      => 'mysql:dbname=hbhotelmanager;host=localhost;port=3306;charset=utf8',
+        'dsn'      => 'mysql:dbname=hbhotelmanager;host=localhost;charset=utf8',
         'username' => 'root',
         'password' => '',
     ],

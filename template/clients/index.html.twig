@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}
 Bienvenue sur la liste des clients
 {% endblock title %}
+
 {% block content %}
 
 <a href="{{env.base_path}}">
@@ -14,7 +16,7 @@ Bienvenue sur la liste des clients
 
 <hr class="col-8">
 
-<div class="card">
+<div class="card mb-5">
     <div class="card-header text-center"><strong>Liste des chambres</strong></div>
     <div class="card-body">
         <table class="table table-striped">
@@ -25,23 +27,30 @@ Bienvenue sur la liste des clients
                     <th>Prénom</th>
                     <th>Date d'arrivé du client</th>
                     <th>Date de départ du client</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                {% for user in users %}
+                {% for user in client %}
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                {% endfor %}
+                    <td>{{user.id}}</td>
+                    <td>{{user.firstname}}</td>
+                    <td>{{user.lastname}}</td>
+                    <td>{{user.entry_date}}</td>
+                    <td>{{user.departure_date}}</td>
+                    <td><a href="{{ env.base_path ~ '/clients/' ~ user.id }}" class="btn btn-xs btn-primary">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a></td>
+                    {% endfor %}
             </tbody>
         </table>
-
     </div>
 </div>
+
+<a href="{{env.base_path ~ '/clients/new' }}">
+    <i class="fas fa-plus btn btn-primary text-white"> Créer un client </i>
+</a>
+
 
 {% endblock content %}
