@@ -2,43 +2,51 @@
 
 namespace App\Model;
 
-class Room {
+class Room
+{
 
     private $id;
     private $number;
     private $clientId;
     private $client;
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
     }
 
-    public function getNumber() {
+    public function getNumber()
+    {
         return $this->number;
     }
 
-    public function setNumber($number) {
+    public function setNumber($number)
+    {
         $this->number = $number;
     }
 
-    public function getClientId() {
+    public function getClientId()
+    {
         return $this->clientId;
     }
 
-    public function setClientId($clientId) {
+    public function setClientId($clientId)
+    {
         $this->clientId = $clientId;
     }
 
-    public function getClient() {
+    public function getClient()
+    {
         return $this->client;
     }
 
-    public function setClient($client) {
+    public function setClient($client)
+    {
         $this->client = $client;
     }
-
 }
