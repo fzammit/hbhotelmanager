@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}
 Bienvenue sur la liste des clients
-{% endblock %}
+{% endblock title %}
 {% block content %}
 
 <a href="{{env.base_path}}">
@@ -28,4 +28,20 @@ Bienvenue sur la liste des clients
                 </tr>
             </thead>
 
-{% endblock %}
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock content %}

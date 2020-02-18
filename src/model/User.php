@@ -16,7 +16,7 @@ class User
         return $this->id;
     }
 
-    public function setId($id)
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -26,7 +26,7 @@ class User
         return $this->firstname;
     }
 
-    public function setFirstname($firstname)
+    public function setFirstname(string $firstname)
     {
         $this->firstname = $firstname;
     }
@@ -36,7 +36,7 @@ class User
         return $this->lastname;
     }
 
-    public function setLastname($lastname)
+    public function setLastname(string $lastname)
     {
         $this->lastname = $lastname;
     }
