@@ -1,4 +1,44 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    Bienvenue sur votre liste de chambre
-{% endblock %}
+Bienvenue sur votre liste de chambre
+{% endblock title %}
+
+{% block content %}
+
+<a href="{{env.base_path}}">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> retour à la liste
+</a>
+
+<div class="text-center">
+    <h1>Bienvenue sur la liste des chambres</h1>
+</div>
+
+<hr class="col-8">
+
+<div class="card mb-5">
+    <div class="card-header text-center"><strong>Liste des chambres</strong></div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>number</th>
+                    <th>clientId</th>
+                    <th>client</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for r in room %}
+                <tr>
+                    <th>{{r.id}}</th>
+                    <th>{{r.number}}</th>
+                    <th>{{r.iclientId}}</th>
+                    <th>{{r.client}}</th>
+                    <th></th>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+            {% endblock content %}

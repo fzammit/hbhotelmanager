@@ -17,7 +17,7 @@ Bienvenue sur la liste des clients
 <hr class="col-8">
 
 <div class="card mb-5">
-    <div class="card-header text-center"><strong>Liste des chambres</strong></div>
+    <div class="card-header text-center"><strong>Liste des clients</strong></div>
     <div class="card-body">
         <table class="table table-striped">
             <thead>
@@ -37,8 +37,8 @@ Bienvenue sur la liste des clients
                     <td>{{user.id}}</td>
                     <td>{{user.firstname}}</td>
                     <td>{{user.lastname}}</td>
-                    <td>{{user.entry_date}}</td>
-                    <td>{{user.departure_date}}</td>
+                    <td>{{user.entry_date | date("d/m/Y")}}</td>
+                    <td>{{user.departure_date | date("d/m/Y")}}</td>
                     <td><a href="{{ env.base_path ~ '/clients/' ~ user.id }}" class="btn btn-xs btn-primary">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </a></td>

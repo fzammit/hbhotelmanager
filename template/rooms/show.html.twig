@@ -51,7 +51,7 @@ Gestionnaire d'hôtels Hb-HotelManager
         </p>
     </div>
     <div class="card-footer">
-        <a href="#" class="btn btn-danger">
+        <a href="{{env.base_path ~ '/rooms/' ~ room.id ~ '/delete'}}" class="btn btn-danger">
             <i class="fa fa-trash" aria-hidden="true"></i> Supprimer la chambre
         </a>
     </div>

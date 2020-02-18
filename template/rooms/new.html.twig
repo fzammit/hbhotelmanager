@@ -1,1 +1,41 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}
+Créez une nouvelle chambre
+{% endblock title %}
+
+{% block content %}
+
+{% if room %}
+<form action="{{ env.base_path ~ '/rooms/' ~ room.id ~ '/edit' }}" method="post" class="form">
+    {% else %}
+    <form action="{{env.bath_base ~ '/rooms/' ~ room.id}}" method="post" class="form">
+        {% endif %}
+
+        <div class="form-group">
+            <label for="formNumber">Numéro de Chambre</label>
+            <input id="formNumber" type="text" class="form-control" name="number" value="{{ room.number }}">
+        </div>
+        <div class="form-group">
+            <label for="formDisponibility">Disponibilité</label>
+            <input type="text" name="disponibility" id="disponibility" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label for="departure_date">date de départ</label>
+            <input type="date" name="departure" id="departure" class="form-control">
+        </div>
+        <div>
+            <label for="nextClient_arrival">Date d'arrivée du prochaine client</label>
+            <input type="date" name="next_client" id="next" class="form-control">
+        </div>
+
+        {% if room %}
+        <button class="btn btn-warning">Éditer la chambre</button>
+        {% else %}
+        <button class="btn btn-primary">Créer la chambre</button>
+        {% endif %}
+        </div>
+
+    </form>
+
+    {% endblock content %}
