@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Gestionnaire d'hôtels Hb-HotelManager
+{% endblock %}
+
+{% block content %}
+
+    <div class="text-center">
+        <h1>Bienvenue sur votre gestionnaire d'hotel HB Hotel Manager !</h1>
+    </div>
+
+    <hr>
+
+    <div class="card text-center mb-3">
+        <div class="card-header">
+            <strong>Actions</strong>
+        </div>
+        <div class="card-body">
+            <a href="{{ env.base_path ~ '/clients/new/'}}" class="btn btn-primary">
+                Créer un nouveau client
+            </a>
+
+            <a href="{{ env.base_path ~ '/rooms/new/'}}" class="btn btn-secondary">
+                Créer une nouvelle chambre
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header text-center"><strong>Liste des chambres</strong></div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Numéro de chambre</th>
+                        <th>Occupation</th>
+                        <th>Date de départ du client</th>
+                        <th>Date d'arrivée du prochain client</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>
+                            <span class="badge badge-success">Libre</span>
+                        </td>
+                        <td></td>
+                        <td>2020/03/20</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{{env.base_path ~ '/rooms/1'}}">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>
+                            <span class="badge badge-success">Libre</span>
+                        </td>
+                        <td></td>
+                        <td>2020/03/20</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>
+                            <span class="badge badge-danger">Occupée</span>
+                        </td>
+                        <td>2020/04/03</td>
+                        <td></td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}

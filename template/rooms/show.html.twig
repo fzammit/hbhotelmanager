@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Gestionnaire d'hôtels Hb-HotelManager
+{% endblock %}
+
+{% block content %}
+
+
+<a href="">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> retour à la liste
+</a>
+<!-- CAS 1 : La chambre est innoccupée -->
+<div class="card mb-3">
+    <div class="card-header">
+        <strong>Gestion de la chambre # {{room.number}}</strong> <span class="badge badge-success">Libre</span>
+    </div>
+    <div class="card-body"> 
+
+        <form action="">
+
+            <div class="form-group">
+                <label for="formClient">Ajouter un client</label>
+                <select name="" id="formClient" class="form-control">
+                    <option value="">Emma Watson</option>
+                    <option value="">John Doe</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary">Ajouter le client à la chambre</button>
+
+        </form>
+    </div>
+    <div class="card-footer">
+        <a href="#" class="btn btn-danger">
+            <i class="fa fa-trash" aria-hidden="true"></i> Supprimer la chambre
+        </a>
+    </div>
+</div>
+
+
+<!-- CAS 2 : La chambre est occupée -->
+
+<div class="card">
+    <div class="card-header">
+        <strong>Gestion de la chambre # {{room.number}}</strong> <span class="badge badge-danger">Occupée</span>
+    </div>
+    <div class="card-body">
+        <p>
+            Occupée par Emma Watson. <a href="" class="text-danger">Supprimer le client</a>
+        </p>
+    </div>
+    <div class="card-footer">
+        <a href="#" class="btn btn-danger">
+            <i class="fa fa-trash" aria-hidden="true"></i> Supprimer la chambre
+        </a>
+    </div>
+</div>
+{% endblock %}
