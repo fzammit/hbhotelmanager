@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Bienvenue sur la liste des clients
+{% endblock %}
+{% block content %}
+
+<a href="{{env.base_path}}">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> retour à la liste
+</a>
+
+<div class="text-center">
+    <h1>Bienvenue sur la liste des clients</h1>
+</div>
+
+<hr class="col-8">
+
+<div class="card">
+    <div class="card-header text-center"><strong>Liste des chambres</strong></div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Numéro du client</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date d'arrivé du client</th>
+                    <th>Date de départ du client</th>
+                </tr>
+            </thead>
+
+{% endblock %}
