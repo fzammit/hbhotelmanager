@@ -76,6 +76,10 @@ class clientsController extends AbstractController
      */
     public function delete(int $id)
     {
+        if (!empty($this->container->getRoomManager()->findByField("client_id", $id))) {
+            $this->index();
+            return;
+        }
         $this->container->getUserManager()->delete($id);
         $this->index();
     }

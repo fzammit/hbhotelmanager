@@ -11,14 +11,13 @@ $router->get('', 'PagesController@index'); // Page d'accueil contenant entre aut
 /**
  * Routes ROOM
  */
-$router->get('/rooms/', 'RoomsController@index');// Afficher l'ensemble des rooms
 $router->get('/rooms/(\d+)', 'RoomsController@show'); // Affichage de 1 room
 
 $router->get('/rooms/new', 'RoomsController@new');// Affichage du formulaire
-$router->post('/rooms/new', 'RoomsController@create');// Création d'une room
+$router->post('/rooms', 'RoomsController@create');// Création d'une room
 
 $router->get('/rooms/(\d+)/edit', 'RoomsController@edit');// Edition d'une room
-$router->post('/rooms/(\d+)/edit', 'RoomsController@update');// mise à jour d'une room
+$router->post('/rooms/(\d+)/deleteClient', 'RoomsController@deleteClient');// mise à jour d'une room
 
 $router->get('/rooms/(\d+)/delete/', 'RoomsController@delete');// Supprimer une room
 

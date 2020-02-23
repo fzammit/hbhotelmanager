@@ -25,7 +25,11 @@ class RoomManager extends AbstractManager implements ManagerInterface {
         $room->setNumber($array['number']);
         $room->setClientId($array['client_id']);
         
-        // $room->setClient(); // à faire
+        if ($array ['client_id'] !== null) {
+            $room->setClient(
+                $this->container->getUserManager()->findOneById($array['client_id'])
+            );
+        }
 
         return $room;
     }
@@ -74,6 +78,19 @@ class RoomManager extends AbstractManager implements ManagerInterface {
      */
     public function findByField(string $field, string $value)
     {
+        $query = "SELECT * FROM room WHERE " . $field . ":value";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute(['value' => $value]);
+
+        $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $rooms = [];
+
+        foreach($data as $d) {
+            $rooms[] = $this->arrayToObject($d);
+        }
+
+        return $rooms;
     }
 
     /**
@@ -93,12 +110,11 @@ class RoomManager extends AbstractManager implements ManagerInterface {
      */
     public function update(int $id, array $data)
     {
-        $query = "UPDATE room SET number = :number, client_id = :client_id WHERE id = :id";
+        $query = "UPDATE room SET client_id = :client_id WHERE id = :id";
 
         $statement = $this->pdo->prepare($query);
         $statement->execute([
             'id' => $id,
-            'number' => $data['number'],
             'client_id'  => $data['client_id']
         ]);
 

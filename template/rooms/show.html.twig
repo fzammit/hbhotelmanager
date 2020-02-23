@@ -13,12 +13,22 @@ Gestionnaire d'hôtels Hb-HotelManager
 <!-- CAS 1 : La chambre est innoccupée -->
 <div class="card mb-3">
     <div class="card-header">
-        <strong>Gestion de la chambre # {{room.number}}</strong> <span class="badge badge-success">Libre</span>
+        <strong>Gestion de la chambre # {{room.number}}</strong> 
+        {% if room.clientId %}
+        <span class="badge badge-danger">Occupé</span>
+        {% else %}
+        <span class="badge badge-success">Libre</span>
+        {% endif %}
     </div>
     <div class="card-body"> 
 
-        <form action="">
-
+        {% if room.clientId %}
+        <p>
+            Occupée par {{ room.client.firstname }} {{ room.client.lastname }}. <a
+                href="{{ env.base_path ~ '/rooms/' ~ room.id ~ '/deleteClient' }}" class="text-danger">Supprimer la
+                reservation</a>
+        </p>
+        <form action="{{ env.base_path ~ '/rooms/' ~ room.id ~ '/edit' }}" method="post">
             <div class="form-group">
                 <label for="formClient">Ajouter un client</label>
                 <select name="" id="formClient" class="form-control">
@@ -30,28 +40,10 @@ Gestionnaire d'hôtels Hb-HotelManager
             <button class="btn btn-primary">Ajouter le client à la chambre</button>
 
         </form>
+        {% endif %}
     </div>
     <div class="card-footer">
         <a href="#" class="btn btn-danger">
-            <i class="fa fa-trash" aria-hidden="true"></i> Supprimer la chambre
-        </a>
-    </div>
-</div>
-
-
-<!-- CAS 2 : La chambre est occupée -->
-
-<div class="card">
-    <div class="card-header">
-        <strong>Gestion de la chambre # {{room.number}}</strong> <span class="badge badge-danger">Occupée</span>
-    </div>
-    <div class="card-body">
-        <p>
-            Occupée par Emma Watson. <a href="" class="text-danger">Supprimer le client</a>
-        </p>
-    </div>
-    <div class="card-footer">
-        <a href="{{env.base_path ~ '/rooms/' ~ room.id ~ '/delete'}}" class="btn btn-danger">
             <i class="fa fa-trash" aria-hidden="true"></i> Supprimer la chambre
         </a>
     </div>

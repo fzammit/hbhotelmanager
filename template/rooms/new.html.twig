@@ -6,36 +6,26 @@ Créez une nouvelle chambre
 
 {% block content %}
 
-{% if room %}
-<form action="{{ env.base_path ~ '/rooms/' ~ room.id ~ '/edit' }}" method="post" class="form">
-    {% else %}
-    <form action="{{ env.base_path ~ '/rooms/'}}" method="post" class="form">
-        {% endif %}
+<a href="{{ env.base_path }}">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> retour à l'accueil
+</a>
+<!-- CAS 1 : La chambre est innoccupée -->
+<div class="card mb-3">
+    <div class="card-body">
 
-        <div class="form-group">
-            <label for="formNumber">Numéro de Chambre</label>
-            <input id="formNumber" type="text" class="form-control" name="number" value="{{ room.number }}">
-        </div>
-        <div class="form-group">
-            <label for="formDisponibility">Disponibilité</label>
-            <input type="text" name="disponibility" id="disponibility" class="form-control" >
-        </div>
-        <div class="form-group">
-            <label for="departure_date">date de départ</label>
-            <input type="date" name="departure" id="departure" class="form-control">
-        </div>
-        <div>
-            <label for="nextClient_arrival">Date d'arrivée du prochaine client</label>
-            <input type="date" name="next_client" id="next" class="form-control">
-        </div>
+        <form action="{{ env.base_path ~ '/rooms' }}" method="post">
 
-        {% if room %}
-        <button class="btn btn-warning">Éditer la chambre</button>
-        {% else %}
-        <button class="btn btn-primary">Créer la chambre</button>
-        {% endif %}
-        </div>
+            <div class="form-group">
+                <label for="formRoomNumber">Numéro de chambre</label>
+                <input type="number" id="formRoomNumber" class="form-control" name="number">
+            </div>
 
+            <button class="btn pull-right btn-primary">Créer la nouvelle chambre</button>
+
+        </form>
+
+    </div>
+</div>
     </form>
 
     {% endblock content %}

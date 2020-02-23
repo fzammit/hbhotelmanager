@@ -34,6 +34,7 @@ Gestionnaire d'hôtels Hb-HotelManager
                 <thead>
                     <tr>
                         <th>Numéro de chambre</th>
+                        <th>Réservation</th>
                         <th>Occupation</th>
                         <th>Date de départ du client</th>
                         <th>Date d'arrivée du prochain client</th>
@@ -42,19 +43,45 @@ Gestionnaire d'hôtels Hb-HotelManager
                 </thead>
 
                 <tbody>
+                    {% for room in rooms %}
                     <tr>
-                        <td>{{room.numero}}</td>
+                        <td>{{room.number}}</td>
                         <td>
+                            {% if rooms.clientId %}
+                            <span class="badge badge-warning">Réservée par {{ room.client.firstname }}
+                                {{ room.client.lastname }}</span>
+                            {% else %}
                             <span class="badge badge-success">Libre</span>
+                            {% endif %}
                         </td>
-                        <td>{{client.departure_date}}</td>
-                        <td></td>
+                        <td>
+                            {# Si la date d'entrée est passée, et que la date de départ est future, alors on dit "réservée par..." #}
+                            {% if room.clientId and room.client.entryDate < date()|date('Y-m-d') and room.client.departureDate > date()|date('Y-m-d') %}
+                            <span class="badge badge-danger">Occupée par {{ room.client.firstname }}
+                                {{ room.client.lastname }}</span>
+                            {% else %}
+                            <span class="badge badge-success">Libre</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {# Si la date d'entrée est passée, et que la date de départ est future, alors on dit "départ prévu le..." #}
+                            {% if room.clientId and room.client.entryDate < date()|date('Y-m-d') and room.client.departureDate > date()|date('Y-m-d') %}
+                            Départ prévu le {{ room.client.entryDate | date('d/m/Y') }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {# Si la date d'entrée est future, et que la date de départ est future aussi, alors on dit "arrivée prévue le..." #}
+                            {% if room.clientId and room.client.entryDate > date()|date('Y-m-d') %}
+                            Arrivée prévue le {{ room.client.entryDate | date('d/m/Y') }}
+                            {% endif %}
+                        </td>
                         <td>
                             <a class="btn btn-primary btn-sm" href="{{env.base_path ~ '/rooms/1'}}">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </a>
                         </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
